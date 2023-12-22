@@ -1,0 +1,1 @@
+psql -f hska_pgsql_bike.sql g28
