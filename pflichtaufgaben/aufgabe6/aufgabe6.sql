@@ -1,4 +1,4 @@
---
+--aufgabe6--
 --Studiengang--
 CREATE TABLE Studiengang (
     Kuerzel VARCHAR(255) PRIMARY KEY,
@@ -11,7 +11,8 @@ CREATE TABLE Dozent (
     Name VARCHAR(255) NOT NULL,
     Vorname VARCHAR(255) NOT NULL,
     Grad VARCHAR(255),
-    Email VARCHAR(255) NOT NULL
+    Email VARCHAR(255) NOT null
+    foreign key (ID) references Veranstaltung(ID)
 );
 
 --Erweiterung von Dozent um Daten welche auf Professoren und Mitarbeiter beschraenkt sind--
@@ -21,45 +22,41 @@ CREATE TABLE Professor_Mitarbeiter (
     Sprechzeiten VARCHAR(255),
     FOREIGN KEY (ID) REFERENCES Dozent(ID)
 );
-
+--gebaeude--
 CREATE TABLE Gebaeude (
     Nummer SERIAL PRIMARY KEY,
     Name VARCHAR(255) NOT NULL
 );
-
+--raum, per gebaeudenummer mit gebaeude verknuepft--
 CREATE TABLE Raum (
     Nummer SERIAL PRIMARY KEY,
     Name VARCHAR(255) NOT NULL,
     GebaeudeNummer INT,
     FOREIGN KEY (GebaeudeNummer) REFERENCES Gebaeude(Nummer)
 );
-
+--veranstaltung, Typ als attribut angegeben, da sonst nirgends verwendet--
 CREATE TABLE Veranstaltung (
-    Name VARCHAR(255) PRIMARY KEY,
+    ID INTEGER PRIMARY KEY, --hinzugefuegt--
+	Name VARCHAR(255),
     Typ VARCHAR(255) CHECK(Typ IN ('Labor', 'Übung', 'Vorlesung')),
-    Wochentag VARCHAR(255),
+    Wochentag INTEGER,
     Startzeit TIME,
     Endzeit TIME,
-    Raum1 INT,
-    Raum2 INT,
-    Dozent1 INT,
-    Dozent2 INT,
     StudiengangKuerzel VARCHAR(255),
     Fachsemester INT,
     Haeufigkeit VARCHAR(255),
-    FOREIGN KEY (Raum1) REFERENCES Raum(Nummer),
-    FOREIGN KEY (Raum2) REFERENCES Raum(Nummer),
-    FOREIGN KEY (Dozent1) REFERENCES Dozent(ID),
-    FOREIGN KEY (Dozent2) REFERENCES Dozent(ID),
     FOREIGN KEY (StudiengangKuerzel) REFERENCES Studiengang(Kuerzel)
 );
 
+
+--stundenplan, per foreign key mir Studiengang verknuepft--
 CREATE TABLE Stundenplan (
     ID SERIAL PRIMARY KEY,
     StudiengangKuerzel VARCHAR(255),
     FOREIGN KEY (StudiengangKuerzel) REFERENCES Studiengang(Kuerzel)
 );
 
+--aufloesen von n:m beziehung--
 CREATE TABLE Stundenplan_Veranstaltung (
     StundenplanID INT,
     VeranstaltungName VARCHAR(255),
