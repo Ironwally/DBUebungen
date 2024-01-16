@@ -1,5 +1,8 @@
 package de.hska.iwii.db1.weather.reader;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
+import de.hska.iwii.db1.weather.model.WeatherForecast;
+
 import java.io.IOException;
 import java.net.Authenticator;
 import java.net.InetSocketAddress;
@@ -11,10 +14,6 @@ import java.net.http.HttpClient.Version;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
 import java.net.http.HttpResponse.BodyHandlers;
-
-import com.fasterxml.jackson.databind.ObjectMapper;
-
-import de.hska.iwii.db1.weather.model.WeatherForecast;
 
 /**
  * Reader zum Lesen und Parsen der Wetterdaten.

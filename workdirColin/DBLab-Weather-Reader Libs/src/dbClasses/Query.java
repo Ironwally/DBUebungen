@@ -1,7 +1,6 @@
 package dbClasses;
 
 import de.hska.iwii.db1.weather.model.Weather;
-import jakarta.persistence.Entity;
 import jakarta.persistence.*;
 import org.jetbrains.annotations.NotNull;
 
