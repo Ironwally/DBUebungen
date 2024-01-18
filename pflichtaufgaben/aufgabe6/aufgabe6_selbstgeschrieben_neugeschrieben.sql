@@ -51,7 +51,6 @@ create table dozent(
 	foreign key (id) references veranstaltung(id)
 );
 
-rollback;
 commit;
 
 -- created types droppen (deleten): drop type veranstaltungsTyp;

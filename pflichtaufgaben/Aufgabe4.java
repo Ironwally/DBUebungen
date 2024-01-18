@@ -7,11 +7,6 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.sql.*;
 
-
-
-
-
-
 public class Aufgabe4 {
 	private static final String URL = "jdbc:postgresql://datenbanken1.ddns.net:3690/g28";
 	private static final String USER = "g28";

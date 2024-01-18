@@ -3,25 +3,40 @@ import de.hska.iwii.db1.weather.model.WeatherForecast;
 import de.hska.iwii.db1.weather.reader.WeatherReader;
 
 import java.io.IOException;
+import java.sql.Date;
+import java.sql.SQLException;
 
 /**
  * Demo-Klasse fuer den Zugriff auf das Wetter der Stadt Karlsruhe. 
  */
 public class DemoWeather {
 
-	public static void main(String[] args) throws IOException {
+	public static void main(String[] args) throws IOException, SQLException, ClassNotFoundException {
 
+		//Start connection to DB
+		jdbcTalker app = new jdbcTalker();
 		WeatherReader reader = new WeatherReader();
 		WeatherForecast forecast = reader.readWeatherForecast(10519);
+
+		app.addWeather(forecast, new Date(System.currentTimeMillis()), 10519);
+
+		app.addWeather(reader.readWeatherForecast(10517), new Date(System.currentTimeMillis()), 10517);
+		app.addWeather(reader.readWeatherForecast(10516), new Date(System.currentTimeMillis()), 10516);
+		app.addWeather(reader.readWeatherForecast(10515), new Date(System.currentTimeMillis()), 10515);
+		app.addWeather(reader.readWeatherForecast(10514), new Date(System.currentTimeMillis()), 10514);
+
+		app.getWeather(10509);
+
+		app.getStations(2024,1,12, 5, 4);
 
 		if (forecast != null) {
 			for (Weather weather: forecast.getWeather()) {
 				System.out.println(weather.getDate() + ", " + weather.getMinTemp() / 10.0 + ", " + weather.getMaxTemp() / 10.0);
 			}
 		}
-
 	}
 }
+
 
 /*
 	 1. Erzeugt ein WeatherReader-Objekt fuer die komplette

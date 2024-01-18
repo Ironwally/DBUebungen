@@ -15,6 +15,18 @@
       <src_folder value="file://$MODULE_DIR$/src" expected_position="0" />
     </src_description>
   </component>
+  <component name="FacetManager">
+    <facet type="jpa" name="JPA">
+      <configuration>
+        <setting name="validation-enabled" value="true" />
+        <datasource-mapping>
+          <factory-entry name="iron" value="56d0ae7a-f759-4b42-961d-41781a8d776e" />
+        </datasource-mapping>
+        <naming-strategy-map />
+        <deploymentDescriptor name="persistence.xml" url="file://$MODULE_DIR$/src/main/resources/META-INF/persistence.xml" />
+      </configuration>
+    </facet>
+  </component>
   <component name="NewModuleRootManager">
     <output url="file://$MODULE_DIR$/bin" />
     <exclude-output />
@@ -117,5 +129,6 @@
     <orderEntry type="library" name="lib (2)" level="project" />
     <orderEntry type="library" name="jakartaLib" level="project" />
     <orderEntry type="library" name="jakartaLib (2)" level="project" />
+    <orderEntry type="library" name="libsaufg4" level="project" />
   </component>
 </module>
